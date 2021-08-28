@@ -26,6 +26,10 @@ const classes= useStyles();
 <Link to="/products"className={classes.link}> Products</Link>
          
           </Typography>
+                   <Typography variant="h6" >
+<Link to="/products/new"className={classes.link}> NewProducts</Link>
+         
+          </Typography>
                      <Typography variant="h6" >
 <Link to="/contact-us"className={classes.link}> Contact us</Link>
          

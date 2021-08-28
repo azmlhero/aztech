@@ -4,6 +4,7 @@ import ContactUs from './components/ContactUs';
 import LandingPage from './components/LandingPage';
 import LogIn from './components/LogIn';
 import Notfound from './components/NotFound';
+import NewProduct from './components/products/NewProduct';
 import Products from './components/products/Products';
 import TopMenu from "./components/TopMenu";
 
@@ -17,6 +18,7 @@ function App() {
         <TopMenu/>
         <Switch>
 
+              <Route exact path ="/products/new" component={NewProduct}/>
               <Route exact path ="/products" component={Products}/>
               <Route path ="/contact-us" component={ContactUs}/>
               <Route path ="/login" component ={LogIn}/>
