@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from "axios";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import SingleProduct from "./SingleProduct"
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import productService from '../../services/ProductService';
 const useStyles = makeStyles((theme) => ({
   addBtn:{
         position: "absolute",
@@ -19,15 +20,17 @@ const Products = (props) => {
     const classes = useStyles();
     const [products, setProducts]=React.useState([]);
     const getData = () => {
-        axios.get("http://localhost:3000/api/products").then((res) => {
-            setProducts(res.data)
+        productService
+            .getProducts()
+            .then((data) => {
+            setProducts(data)
 
         }).catch(err => {
             console.log(err);
         });
     };
 //    getData();
-    React.useEffect(getData,[])
+    React.useEffect(getData,[]) 
     // console.log("inside products components")
     
     const handleNewProductClick = () => {

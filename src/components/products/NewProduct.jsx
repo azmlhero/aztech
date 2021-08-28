@@ -1,10 +1,11 @@
 import { Button, Grid, TextField } from '@material-ui/core';
 import axios from 'axios';
-import React from 'react';
+import React,{useHistory} from 'react';
+import productService from '../../services/ProductService';
 const NewProduct = (props) => {
     const [name, setName] = React.useState("");
     const [price, setPrice] = React.useState(0);
-    
+    // const history = React.useHistory("");
     return (
         <Grid container spacing={3}>
             <Grid item xs ={12}>
@@ -19,9 +20,14 @@ const NewProduct = (props) => {
                                
             <Grid item xs={9}>  <Button variant="contained" color="primary" onClick={(e) => {
                 console.log("Send api call to ADD");
-                axios.post("http://localhost:3000/products", { name, price })
-                    .then(res => { console.log(res.data) })
-                    .catch(  (err) => {console.log(err)})
+   
+               productService.addProduct( { name, price })
+                    .then((data) => {
+                        console.log(data);
+                        props.history.push("/products");
+                    })
+                    .catch((err) => { console.log(err) });
+                
             }}> Add New </Button>
                 
                 </Grid>
